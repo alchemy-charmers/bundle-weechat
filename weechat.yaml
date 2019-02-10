@@ -1,0 +1,34 @@
+series: bionic
+applications:
+  wireguard:
+    charm: cs:~pirate-charmers/wireguard-1
+    num_units: 1
+    series: xenial
+    expose: true
+    options:
+      address: "10.10.10.1/24"
+      forward-dev: "ens4"
+    to:
+      - haproxy/0
+  weechat:
+    charm: cs:~pirate-charmers/weechat-3
+    num_units: 1
+    channel: edge
+    to:
+      - lxd:haproxy/0
+    options:
+      user-config: include-file://blog.cfg
+  haproxy:
+    charm: cs:~pirate-charmers/haproxy-2
+    num_units: 1
+    expose: true
+    series: xenial
+    # constraints: "instance-type=f1-micro"
+  ddclient:
+    charm: cs:~pirate-charmers/ddclient
+    num_units: 1
+    to:
+    - lxd:haproxy/0
+relations:
+  - - weechat:reverseproxy
+    - haproxy:reverseproxy
