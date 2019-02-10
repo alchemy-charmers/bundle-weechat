@@ -17,7 +17,7 @@ applications:
     to:
       - lxd:haproxy/0
     options:
-      user-config: include-file://blog.cfg
+      user-config: include-file://weechat.cfg
   haproxy:
     charm: cs:~pirate-charmers/haproxy-2
     num_units: 1
