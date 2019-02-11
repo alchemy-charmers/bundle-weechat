@@ -13,7 +13,6 @@ applications:
   weechat:
     charm: cs:~pirate-charmers/weechat-3
     num_units: 1
-    channel: edge
     to:
       - lxd:haproxy/0
     options:
