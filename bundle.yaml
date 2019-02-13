@@ -1,7 +1,7 @@
 series: bionic
 applications:
   wireguard:
-    charm: cs:~pirate-charmers/wireguard-1
+    charm: cs:~pirate-charmers/wireguard
     num_units: 1
     series: xenial
     expose: true
@@ -11,14 +11,14 @@ applications:
     to:
       - haproxy/0
   weechat:
-    charm: cs:~pirate-charmers/weechat-3
+    charm: cs:~pirate-charmers/weechat
     num_units: 1
     to:
       - lxd:haproxy/0
     options:
     #  user-config: include-file://weechat.cfg
   haproxy:
-    charm: cs:~pirate-charmers/haproxy-2
+    charm: cs:~pirate-charmers/haproxy
     num_units: 1
     expose: true
     series: xenial
